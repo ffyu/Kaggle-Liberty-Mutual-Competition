@@ -26,10 +26,14 @@ class BuildXgb():
         self._rgr = None
 
     def _feature_select(self, df_train, df_test):
+	
+		# Drop four features
         return df_train.drop(['T1_V10', 'T1_V13', 'T2_V7', 'T2_V10'], axis=1), \
                df_test.drop(['T1_V10', 'T1_V13', 'T2_V7', 'T2_V10'], axis=1)
 
     def _data_clean_factor(self, df_train, df_test):
+	
+		# Convert non-numeric features to factors
         for col_name in df_train.columns.tolist():
             if df_train[col_name].dtype == 'object':
                 le = LabelEncoder()
@@ -39,12 +43,13 @@ class BuildXgb():
         return df_train.astype(float), df_test.astype(float)
 
     def _data_clean_ohe(self, df_train, df_test):
+	
+		# Convert non-numeric features using one-hot-encoding
         df_train['Train_Set'] = 1
         df_test['Train_Set'] = 0
         df = pd.concat([df_train, df_test])
         df.reset_index(inplace=True)
         df.drop(['index'], axis=1, inplace=True)
-        # Convert non-numeric variables to dummies
         for col_name in df.columns.tolist():
             if df_train[col_name].dtype == 'object':
                 df = pd.concat([df, pd.get_dummies(df[col_name], prefix=col_name)], axis=1)
@@ -57,12 +62,13 @@ class BuildXgb():
         return df_train_cleaned.astype(float), df_test_cleaned.astype(float)
 
     def _data_clean_all_ohe(self, df_train, df_test):
+	
+		# Convert all features using one-hot-encoding
         df_train['Train_Set'] = 1
         df_test['Train_Set'] = 0
         df = pd.concat([df_train, df_test])
         df.reset_index(inplace=True)
         df.drop(['index'], axis=1, inplace=True)
-        # Convert non-numeric variables to dummies
         for col_name in df.columns.tolist():
             if col_name != 'Train_Set' and col_name != 'Id' and col_name != 'Hazard' and col_name != 'T2_V1' and col_name != 'T2_V2':
                 df = pd.concat([df, pd.get_dummies(df[col_name], prefix=col_name)], axis=1)
@@ -75,7 +81,8 @@ class BuildXgb():
         return df_train_cleaned.astype(float), df_test_cleaned.astype(float)
 
     def _data_clean_all_factor(self, df_train, df_test):
-        # Convert non-numeric variables
+	
+        # Convert all features to factors
         for col_name in df_train.columns.tolist():
             if col_name != 'Id' and col_name != 'Hazard':
                 le = LabelEncoder()
@@ -85,6 +92,8 @@ class BuildXgb():
         return df_train.astype(float), df_test.astype(float)
 
     def _data_clean_numeric(self, df_train, df_test):
+	
+		# Helper function
         return df_train, df_test
 
     def _pre_processing(self, df_train, df_test):
@@ -140,12 +149,16 @@ class BuildXgb():
         df_result.to_csv(self.folder+'Model{}.csv'.format(self.model_idx))
 
     def build(self, df_train, df_test):
+		
+		# Build the model
         self._pre_processing(df_train, df_test)
         self._fit()
         self._predict()
 
 
 def ensemble_results(y_list, w):
+
+	# Calculate ensemble results given predictions and weights
     combined = np.empty([y_list[0].shape[0], len(y_list)])
     for col, y in enumerate(y_list):
         combined[:, col] = y
@@ -154,6 +167,7 @@ def ensemble_results(y_list, w):
 
 
 def main():
+
     # Read in the raw and processed data
     df_train = pd.read_csv(FOLDER+FILE1)
     df_test = pd.read_csv(FOLDER+FILE2)
@@ -327,4 +341,5 @@ def main():
     df_result.to_csv(FOLDER+'submission.csv')
 
 if __name__ == '__main__':
+
     main()
