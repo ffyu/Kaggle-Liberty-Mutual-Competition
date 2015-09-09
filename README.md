@@ -21,8 +21,9 @@ The final ensemble includes 10 different xgboost models with varying model param
 
 The choice of those 10 models come from a candidate of 185 models with broader model specifications. The incorporation and weights of each model is determined based on a forward stepwise searching algorithm with replacement. The code for training those 185 models and finding the best combinations are too lengthy to show here.
 
--Feifei Yu
+Feifei Yu
 FeifeiYu1204@gmail.com
+
 
 License
 ----
