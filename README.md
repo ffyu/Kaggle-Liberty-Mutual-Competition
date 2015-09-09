@@ -1,7 +1,10 @@
-## My solution for "Liberty Mutual Group: Property Inspection Prediction" competition in Kaggle
+## My solution for Kaggle Competition:
+
+## "Liberty Mutual Group: Property Inspection Prediction" 
+
 https://www.kaggle.com/c/liberty-mutual-group-property-inspection-prediction
 
-### Final private leader board ranking: 17/2236 (top 1%)**
+### Final private leader board ranking: 17/2236 (top 1%)
 
 The script **"submission.py"** produces the prediction based on an ensemble of several XGBoost models with different specifications.
 
@@ -15,7 +18,7 @@ To run the script, you need to download two raw files **"train.csv"** and **"tes
 
 The numeric features are out-of-fold mean, median, and std of the categorical variables
 
-Set the global variable <FOLDER> in **"submission.py"** to the same folder that just downloaded all datat files.
+Set the global variable **"FOLDER"** in **"submission.py"** to the same folder that just downloaded all datat files.
 
 You should be good to go. The running time is around 5 hours in a i5-8G laptop.
 
