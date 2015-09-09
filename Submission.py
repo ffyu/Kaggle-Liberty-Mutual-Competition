@@ -26,13 +26,11 @@ class BuildXgb():
         self._rgr = None
 
     def _feature_select(self, df_train, df_test):
-		
 		# Drop four features
         return df_train.drop(['T1_V10', 'T1_V13', 'T2_V7', 'T2_V10'], axis=1), \
                df_test.drop(['T1_V10', 'T1_V13', 'T2_V7', 'T2_V10'], axis=1)
 
     def _data_clean_factor(self, df_train, df_test):
-		
 		# Convert non-numeric features to factors
         for col_name in df_train.columns.tolist():
             if df_train[col_name].dtype == 'object':
@@ -43,7 +41,6 @@ class BuildXgb():
         return df_train.astype(float), df_test.astype(float)
 
     def _data_clean_ohe(self, df_train, df_test):
-		
 		# Convert non-numeric features using one-hot-encoding
         df_train['Train_Set'] = 1
         df_test['Train_Set'] = 0
@@ -62,7 +59,6 @@ class BuildXgb():
         return df_train_cleaned.astype(float), df_test_cleaned.astype(float)
 
     def _data_clean_all_ohe(self, df_train, df_test):
-		
 		# Convert all features using one-hot-encoding
         df_train['Train_Set'] = 1
         df_test['Train_Set'] = 0
@@ -81,7 +77,6 @@ class BuildXgb():
         return df_train_cleaned.astype(float), df_test_cleaned.astype(float)
 
     def _data_clean_all_factor(self, df_train, df_test):
-		
 		# Convert all features to factors
         for col_name in df_train.columns.tolist():
             if col_name != 'Id' and col_name != 'Hazard':
@@ -92,12 +87,10 @@ class BuildXgb():
         return df_train.astype(float), df_test.astype(float)
 
     def _data_clean_numeric(self, df_train, df_test):
-		
 		# Helper function
         return df_train, df_test
 
     def _pre_processing(self, df_train, df_test):
-		
 		# Get rid of un-useful features
         if self.feature_transform != 'numeric':
             df_train, df_test = self._feature_select(df_train, df_test)
