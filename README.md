@@ -1,6 +1,4 @@
-## My solution for Kaggle Competition:
-
-## "Liberty Mutual Group: Property Inspection Prediction" 
+## My solution for Kaggle's Liberty Mutual Competition:
 
 https://www.kaggle.com/c/liberty-mutual-group-property-inspection-prediction
 
@@ -29,9 +27,3 @@ The choice of those 10 models comes from a candidate of 185 models with broader 
 Feifei Yu
 
 FeifeiYu1204@gmail.com
-
-
-License
-----
-
-MIT
