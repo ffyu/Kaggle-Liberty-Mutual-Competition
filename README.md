@@ -14,7 +14,7 @@ The dependencies include:
 
 To run the script, you need to download two raw files **"train.csv"** and **"test.csv"**, and two processed files **"train_numeric_features.csv"** and **"test_numeric_features.csv"** to the same folder. 
 
-The numeric features are out-of-fold mean, median, and std of the categorical variables
+The numeric features are out-of-fold mean, median, and standard deviation of the categorical variables
 
 Set the global variable **"FOLDER"** in **"submission.py"** to the same folder that just downloaded all datat files.
 
