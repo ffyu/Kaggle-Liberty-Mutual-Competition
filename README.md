@@ -22,7 +22,7 @@ You should be good to go. The running time is around 5 hours in a i5-8G laptop.
 
 The final ensemble includes 10 different xgboost models with varying model parameters, features and target variable transformations. 
 
-The choice of those 10 models comes from a candidate of 185 models with broader model specifications. The incorporation and weights of each model is determined based on a forward stepwise searching algorithm with replacement. The code for training those 185 models and finding the best combinations are too lengthy to show here.
+The choice of those 10 models comes from a candidate of 185 models with broader model specifications. The incorporation and weights of each model is determined based on a forward stepwise searching algorithm with replacement.
 
 Feifei Yu
 
