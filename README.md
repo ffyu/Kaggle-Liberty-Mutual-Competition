@@ -18,7 +18,7 @@ The numeric features are out-of-fold mean, median, and standard deviation of the
 
 Set the global variable **"FOLDER"** in **"submission.py"** to the same folder that just downloaded all datat files.
 
-You should be good to go. The running time is around 5 hours in a i5-8G laptop.
+You should be good to go. The running time is around 5 hours in an i5-8G laptop.
 
 The final ensemble includes 10 different xgboost models with varying model parameters, features and target variable transformations. 
 
